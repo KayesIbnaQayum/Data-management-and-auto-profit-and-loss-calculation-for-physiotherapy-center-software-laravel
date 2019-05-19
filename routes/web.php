@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/patientSession', function(){return view('patientSession');}
+
+)->middleware('auth')->name('patientSession');
+
 Route::get('/home', 'HomeController@index')->name('home');
