@@ -74,7 +74,7 @@
 
                      <input type="submit">
 
-                     <form action="{{route('patientSession.update', ['id'=> $data->id])}}">
+                     <form action="{{route('patientSession.destroy', ['id'=> $data->id])}}">
                       @csrf
                       @method('delete')
 

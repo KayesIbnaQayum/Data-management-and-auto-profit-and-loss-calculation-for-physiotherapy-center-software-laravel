@@ -12,11 +12,6 @@ class PostViewController extends Controller
 {
     //
 
-    public function view_session(){
-    	$data = Psession::paginate(20);
-    	
-    	return view('sessionView')->with('data', $data);
-    }
 
 
     public function view_patientList(){
@@ -25,14 +20,7 @@ class PostViewController extends Controller
     	return view('patientListView')->with('data', $data);
     }
 
-    public function view_docList(){
-    	
-    	 $data = patientListView::paginate(20);
-    	
-    	return view('docListView')->with('data', $data);
-
-
-    }
+ 
 
     
 

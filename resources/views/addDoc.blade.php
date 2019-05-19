@@ -13,31 +13,39 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                     <!--Component-->
                     @include('menu/topMenu')
 
                     <div class="row">
-                        <form action="/action_page.php" class="col-sm-12">
+                        <form action="{{route('doctor.store')}}" method="post" class="col-sm-12">
+                          @csrf
                               <label for="sel1"><span style="color:red">Doctor</span> NAME </label>
-                                  <input type="text" class="form-control" name="firstname"><br>
+                                  <input type="text" class="form-control" name="docName"><br>
 
                               <label for="sel1">Mobile No</label>
-                                  <input type="text" class="form-control" name="firstname"><br>
+                                  <input type="text" class="form-control" name="mobile"><br>
 
                                <label for="sel1">profession</label>
-                                  <input type="text" class="form-control" name="firstname"><br>
+                                  <input type="text" class="form-control" name="prof"><br>
 
                                   <label for="sel1">Address</label>
-                                  <input type="text" class="form-control" name="firstname"><br>                                 
+                                  <input type="text" class="form-control" name="addr"><br>                                 
 
                      <label >Joined Date</label>
-                     <input type="date" name="bday" max="3000-12-31" 
-                            min="1000-01-01" class="form-control"><br>
+                     <input type="date" name="Joined_date" class="form-control"><br>
 
                                  
                                <label for="sel1">NID </label>
-                                  <input type="text" class="form-control" name="firstname"><br>
+                                  <input type="text" class="form-control" name="nid"><br>
 
                                     
 

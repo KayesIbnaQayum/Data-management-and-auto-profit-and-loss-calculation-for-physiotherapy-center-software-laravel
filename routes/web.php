@@ -37,8 +37,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //resource controller 'patient Session'
 Route::resource('patientSession', 'patientSession');
+Route::resource('doctor', 'doctorController');
+
+
 
 Route::get('/sessionView', 'PostViewController@view_session');
 Route::get('/patientListView', 'PostViewController@view_patientList');
-Route::get('/docListView', 'PostViewController@view_docList');
+
 

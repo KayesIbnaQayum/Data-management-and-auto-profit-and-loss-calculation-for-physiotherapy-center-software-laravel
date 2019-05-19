@@ -16,12 +16,12 @@ class patientSession extends Controller
      */
     public function index()
     {
+
+        $data = patientSessions::paginate(20);
+        
+        return view('sessionView')->with('data', $data);
         //
-        $patient_data = DB::select("select id as 'p_id', name as 'p_name' from patientinfo");
-        $therapist_data = DB::select("select id as 't_id', name as 't_name' from docinfo");
-
-
-        return view('patientSession', ['therapist_data'=>$therapist_data, 'patient_data'=>$patient_data]);
+  
     }
 
     /**
@@ -32,6 +32,11 @@ class patientSession extends Controller
     public function create(patientSessionRule $Request)
     {
         //
+              $patient_data = DB::select("select id as 'p_id', name as 'p_name' from patientinfo");
+        $therapist_data = DB::select("select id as 't_id', name as 't_name' from docinfo");
+
+
+        return view('patientSession', ['therapist_data'=>$therapist_data, 'patient_data'=>$patient_data]);
     }
 
     /**
