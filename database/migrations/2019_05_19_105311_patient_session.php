@@ -20,7 +20,7 @@ class PatientSession extends Migration
             $table->integer('therapist_id');
             $table->integer('rate');
             $table->date('session_date');
-            $table->integer('session_time'); /* 0 = morning, 1 = evening, 2 = night*/
+            $table->text('session_time'); /* 0 = morning, 1 = evening, 2 = night*/
         });
     }
 
