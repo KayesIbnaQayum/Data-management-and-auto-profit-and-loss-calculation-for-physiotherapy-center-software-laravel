@@ -34,8 +34,8 @@
                             @foreach ($data as $datas)
                               <tr>
                                 <td>{{ $datas->id }}</td>
-                                <td>{{ $datas->patient_id}}</td>
-                                <td>{{ $datas->therapist_id}}</td>
+                                <td>{{ $datas->patient_name }} ({{ $datas->patient_id}})</td>
+                                <td>{{ $datas->doc_name }} ({{ $datas->therapist_id}})</td>
                                 <td>{{ $datas->rate}}</td>
                                 <td>{{ $datas->session_date}}</td>
                                  <td>{{ $datas->session_time}}</td>

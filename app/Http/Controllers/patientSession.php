@@ -17,7 +17,16 @@ class patientSession extends Controller
     public function index()
     {
 
-        $data = patientSessions::paginate(20);
+        $data = DB::table('patient_session')
+        ->join('patientinfo', 'patient_session.patient_id', '=', 'patientinfo.id')
+        ->join('docinfo', 'patient_session.therapist_id', '=', 'docinfo.id')
+        ->select('patient_session.id', 'patientinfo.name as patient_name','docinfo.name as doc_name', 'patient_session.patient_id', 'patient_session.therapist_id','patient_session.rate','docinfo.name', 'patient_session.session_date','patient_session.session_time')
+        ->paginate(20);
+
+
+     
+
+     
         
         return view('sessionView')->with('data', $data);
         //
