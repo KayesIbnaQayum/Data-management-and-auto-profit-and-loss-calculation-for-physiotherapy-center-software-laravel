@@ -14,7 +14,19 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <!--Component-->
+                    <div class="row">
+                      
+
+                    <button type="button" class="btn col-sm-2" style=" padding:20px; margin: 10px;">Add Session</button>
+                    <button type="button" class="btn col-sm-2" style=" padding:20px; margin: 10px;">Paymenmts</button>       
+                    <button type="button" class="btn col-sm-2" style=" padding:20px; margin: 10px;">Add Rate</button>
+                    <button type="button" class="btn col-sm-2" style=" padding:20px; margin: 10px;">Add Patient</button>
+                    <button type="button" class="btn col-sm-2" style=" padding:20px; margin: 10px;">Add Doctor</button>
+
+
+                    </div>
+
                 </div>
             </div>
         </div>
