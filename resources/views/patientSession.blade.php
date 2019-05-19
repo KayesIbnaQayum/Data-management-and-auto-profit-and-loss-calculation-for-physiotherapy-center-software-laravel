@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -13,45 +14,56 @@
                             {{ session('status') }}
                         </div>
                     @endif
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
                     <!--Component-->
                     @include('menu/topMenu')
 
                     <div class="row">
-                        <form action="/action_page.php" class="col-sm-12">
-                              <label for="sel1"><span style="color:red">Patient</span> NAME and ID</label>
-                                  <select class="form-control" name="patient_id">
-                                    <option value="20">1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                  </select><br>
+                        <form action="{{route('patientSession.store')}}" method="post" class="col-sm-12">
+                            @csrf
+                              <label for="sel1"><span style="color:red">Patient</span> NAME and ID</label><br>
+                                  <input list="browsers" class="form-control" name="patient_id">
+                                <datalist id="browsers" >
+                              @foreach($patient_data as $patient_datas)
+                                  <option value="{{$patient_datas->p_id}}">{{$patient_datas->p_name}}
+                              @endforeach
+                      
+
+                                </datalist><br>
 
                               <label for="sel1">Therapist NAME and ID</label>
-                                  <select class="form-control" id="sel1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                  </select><br>
+                                  <input list="Therapist" class="form-control" name="Therapist">
+                                <datalist id="Therapist">
+                              @foreach($therapist_data as $therapist_datas)
+                                  <option value="{{$therapist_datas->t_id}}">{{$therapist_datas->t_name}}
+                              @endforeach
+                                </datalist><br>
 
 
                               <label for="sel1">Session Time</label>
-                                  <select class="form-control" id="sel1">
-                                    <option>Morning</option>
-                                    <option>Evening</option>
-                                    <option>Night</option>
+                                  <select class="form-control" id="sel1" name="sessionTime">
+                                    <option value='Morning'>Morning</option>
+                                    <option value='Evening'>Evening</option>
+                                    <option value='Night'>Night</option>
                                   </select><br>
                     
-                     <label >Session Date</label>
-                     <input type="date" name="bday" max="3000-12-31" 
-                            min="1000-01-01" class="form-control"><br>
+                     <label id="lbl">Session Date</label>
+                     <input type="date" id="date" name="date"  class="form-control"><br>
 
                     <label >Rate</label>    
                      <input type="text" class="form-control" name="rate"><br>
 
                     <label >Paid</label>    
-                     <input type="text" class="form-control" name="paid"><br>            
+                     <input type="text" id="paid" class="form-control" name="paid"><br>            
 
                      <input type="submit">
                  </form>
