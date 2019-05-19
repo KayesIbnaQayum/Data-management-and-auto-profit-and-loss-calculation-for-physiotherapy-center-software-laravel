@@ -29,7 +29,7 @@ class patientSession extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(patientSessionRule $Request)
+    public function create()
     {
         //
               $patient_data = DB::select("select id as 'p_id', name as 'p_name' from patientinfo");

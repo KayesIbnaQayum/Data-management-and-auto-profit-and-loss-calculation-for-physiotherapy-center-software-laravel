@@ -24,7 +24,6 @@
                                 <th>D. ID</th>
                                 <th>Doctor Name(ID)</th>
                                 <th>mobile</th>
-                                <th>profession</th>
                                 <th>address</th>
                                    <th>NID</th>
                                      <th>Rate</th>
@@ -39,11 +38,7 @@
                                 <td>{{ $datas->id }}</td>
                                 <td>{{ $datas->name}}</td>
                                 <td>{{ $datas->mobile}}</td>
-                                <td>{{ $datas->profession}}</td>
                                 <td>{{ $datas->address}}</td>
-                                 <td>{{ $datas->resposible_doc}}</td>
-                                <td>{{ $datas->room_no}}</td>
-                                  <td>{{ $datas->wc}}</td>
                                    <td>{{ $datas->NID}}</td>
                                  <td><button>Edit</button></td>
                               </tr>
