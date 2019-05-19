@@ -52,6 +52,8 @@ class patientSession extends Controller
 
         $patientSession->save();
 
+         return redirect('patientSession')->with('status', 'Patient session Added');
+
     }
 
     /**
