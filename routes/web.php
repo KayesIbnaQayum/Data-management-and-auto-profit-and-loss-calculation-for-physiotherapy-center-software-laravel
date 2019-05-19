@@ -17,8 +17,28 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/patientSession', function(){return view('patientSession');}
 
-)->middleware('auth')->name('patientSession');
+
+Route::get('/addPayment', function(){return view('addPayment');}
+
+)->middleware('auth')->name('addPayment');
+
+
+Route::get('/addPatient', function(){return view('addPatient');}
+
+)->middleware('auth')->name('addPatient');
+
+Route::get('/addDoc', function(){return view('addDoc');}
+
+)->middleware('auth')->name('addDoc');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//resource controller 'patient Session'
+Route::resource('patientSession', 'patientSession');
+
+Route::get('/sessionView', 'PostViewController@view_session');
+Route::get('/patientListView', 'PostViewController@view_patientList');
+Route::get('/docListView', 'PostViewController@view_docList');
+
