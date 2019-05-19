@@ -75,7 +75,12 @@ class patientSession extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = patientSessions::find($id);
+        $patient_data = DB::select("select id as 'p_id', name as 'p_name' from patientinfo");
+        $therapist_data = DB::select("select id as 't_id', name as 't_name' from docinfo");
+
+
+        return view('patientSession_edit', ['therapist_data'=>$therapist_data, 'patient_data'=>$patient_data, 'data'=>$data]);
     }
 
     /**
@@ -87,7 +92,17 @@ class patientSession extends Controller
      */
     public function update(Request $request, $id)
     {
+         $patientSession = patientSessions::find($id);
+        $patientSession->patient_id = $request->input('patient_id');
+        $patientSession->therapist_id = $request->input('Therapist');
+        $patientSession->rate = $request->input('rate');
+        $patientSession->session_time = $request->input('sessionTime');
+        $patientSession->session_date = $request->input('date');
+        $patientSession->save();
+
+        $redirect = 'patientSession/'.$id.'/edit';
         //
+         return redirect($redirect)->with('status', 'Patient session Edit');
     }
 
     /**
@@ -96,8 +111,17 @@ class patientSession extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $req)
     {
         //
+        if($req->input('delete') == 1){
+            patientSessions::find($id)->delete();
+            return redirect()->route('home')->with('status', 'Patient session Deleted');
+        }else{
+            $redirect = 'patientSession/'.$id.'/edit';
+        //
+         return redirect($redirect)->with('cerror', 'You must click Delete Checkbox to delete');
+        }
+        
     }
 }
