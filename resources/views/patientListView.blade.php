@@ -47,7 +47,7 @@
                                 <td>{{ $datas->room_no}}</td>
                                   <td>{{ $datas->wc}}</td>
                                    <td>{{ $datas->NID}}</td>
-                                 <td><button>Edit</button></td>
+                                   <td><a class="btn btn-primary" href="{{route('patient.edit', $datas->id)}}">Edit</a></td>
                               </tr>
                                 
                             @endforeach

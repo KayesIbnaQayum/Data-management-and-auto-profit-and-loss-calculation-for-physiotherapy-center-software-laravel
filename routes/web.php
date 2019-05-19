@@ -24,13 +24,6 @@ Route::get('/addPayment', function(){return view('addPayment');}
 )->middleware('auth')->name('addPayment');
 
 
-Route::get('/addPatient', function(){return view('addPatient');}
-
-)->middleware('auth')->name('addPatient');
-
-Route::get('/addDoc', function(){return view('addDoc');}
-
-)->middleware('auth')->name('addDoc');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

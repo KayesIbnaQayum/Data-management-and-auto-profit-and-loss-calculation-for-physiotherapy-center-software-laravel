@@ -40,7 +40,7 @@
                                 <td>{{ $datas->mobile}}</td>
                                 <td>{{ $datas->address}}</td>
                                    <td>{{ $datas->NID}}</td>
-                                 <td><button>Edit</button></td>
+                                <td><a class="btn btn-primary" href="{{route('doctor.edit', $datas->id)}}">Edit</a></td>
                               </tr>
                                 
                             @endforeach

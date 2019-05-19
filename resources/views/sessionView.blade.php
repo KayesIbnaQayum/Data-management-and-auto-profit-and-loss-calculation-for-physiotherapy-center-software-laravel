@@ -39,6 +39,7 @@
                                 <td>{{ $datas->rate}}</td>
                                 <td>{{ $datas->session_date}}</td>
                                  <td>{{ $datas->session_time}}</td>
+                                 <td><a class="btn btn-primary" href="{{route('patientSession.edit', $datas->id)}}">Edit</a></td>
                               </tr>
                                 
                             @endforeach
