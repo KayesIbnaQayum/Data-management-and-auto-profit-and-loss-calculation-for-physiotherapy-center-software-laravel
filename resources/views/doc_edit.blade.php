@@ -35,10 +35,10 @@
                         <form action="{{route('doctor.update', ['id'=>$data->id])}}" method="post" class="col-sm-12">
                           @csrf
                           @method('put')
-                              <label for="sel1"><span style="color:red">Doctor</span> NAME </label>
+                              <label for="sel1"><span style="color:red">Doctor</span> NAME <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="docName" value="{{$data->name}}"><br>
 
-                              <label for="sel1">Mobile No</label>
+                              <label for="sel1">Mobile No <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="mobile" value="{{$data->mobile}}"><br>
 
                             

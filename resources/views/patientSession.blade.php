@@ -37,7 +37,7 @@
                     <div class="row">
                         <form action="{{route('patientSession.store')}}" method="post" class="col-sm-12">
                             @csrf
-                              <label for="sel1"><span style="color:red">Patient</span> NAME and ID</label><br>
+                              <label for="sel1"><span style="color:red">Patient</span> NAME and ID<span style="color:red">*</span></label><br>
                                   <input list="browsers" class="form-control" name="patient_id" value="{{old('patient_id')}}">
                                 <datalist id="browsers" >
                               @foreach($patient_data as $patient_datas)
@@ -47,7 +47,7 @@
 
                                 </datalist><br>
 
-                              <label for="sel1">Therapist NAME and ID</label>
+                              <label for="sel1">Therapist NAME and ID<span style="color:red">*</span></label>
                                   <input list="Therapist" class="form-control" name="Therapist" value="{{old('Therapist')}}">
                                 <datalist id="Therapist">
                               @foreach($therapist_data as $therapist_datas)
@@ -56,20 +56,20 @@
                                 </datalist><br>
 
 
-                              <label for="sel1">Session Time</label>
+                              <label for="sel1">Session Time<span style="color:red">*</span></label>
                                   <select class="form-control" id="sel1" name="sessionTime" value="{{old('sessionTime')}}">
                                     <option value='Morning'>Morning</option>
                                     <option value='Evening'>Evening</option>
                                     <option value='Night'>Night</option>
                                   </select><br>
                     
-                     <label id="lbl">Session Date</label>
+                     <label id="lbl">Session Date<span style="color:red">*</span></label>
                      <input type="date" id="date" name="date"  class="form-control" value="{{old('date')}}"><br>
 
-                    <label >Rate</label>    
+                    <label >Rate<span style="color:red">*</span></label>    
                      <input type="text" class="form-control" name="rate" value="{{old('rate')}}"><br>
 
-                    <label >Paid</label>    
+                    <label >Paid<span style="color:red">*</span></label>    
                      <input type="text" id="paid" class="form-control" name="paid" value="{{old('paid')}}"><br>            
 
                      <input type="submit">

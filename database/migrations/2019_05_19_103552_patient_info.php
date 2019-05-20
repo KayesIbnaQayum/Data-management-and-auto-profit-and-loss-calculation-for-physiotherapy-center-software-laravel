@@ -20,7 +20,7 @@ class PatientInfo extends Migration
             $table->String('name');
             $table->bigInteger('mobile');
             $table->longText('profession')->nullable();
-            $table->longText('address')->nullable();;
+            $table->longText('address')->nullable();
               $table->integer('resposible_doc');
               $table->integer('room_no')->nullable();
                $table->longText('wc')->nullable();

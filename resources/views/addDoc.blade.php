@@ -28,10 +28,10 @@
                     <div class="row">
                         <form action="{{route('doctor.store')}}" method="post" class="col-sm-12">
                           @csrf
-                              <label for="sel1"><span style="color:red">Doctor</span> NAME </label>
+                              <label for="sel1"><span style="color:red">Doctor</span> NAME <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="docName"><br>
 
-                              <label for="sel1">Mobile No</label>
+                              <label for="sel1">Mobile No <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="mobile"><br>
 
                                <label for="sel1">profession</label>

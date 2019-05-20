@@ -37,7 +37,7 @@
                         <form action="{{route('patientSession.update', ['id'=> $data->id])}}" method="post" class="col-sm-12">
                             @csrf
                             @method('put')
-                              <label for="sel1"><span style="color:red">Patient</span> NAME and ID</label><br>
+                              <label for="sel1"><span style="color:red">Patient</span> NAME and ID<span style="color:red">*</span></label><br>
                                   <input list="browsers" class="form-control" name="patient_id" value="{{$data->patient_id}}">
                                 <datalist id="browsers" >
                               @foreach($patient_data as $patient_datas)
@@ -47,7 +47,7 @@
 
                                 </datalist><br>
 
-                              <label for="sel1">Therapist NAME and ID</label>
+                              <label for="sel1">Therapist NAME and ID<span style="color:red">*</span></label>
                                   <input list="Therapist" class="form-control" name="Therapist" value="{{$data->therapist_id}}">
                                 <datalist id="Therapist">
                               @foreach($therapist_data as $therapist_datas)
@@ -56,20 +56,20 @@
                                 </datalist><br>
 
 
-                              <label for="sel1">Session Time</label>
+                              <label for="sel1">Session Time<span style="color:red">*</span></label>
                                   <select class="form-control" id="sel1" name="sessionTime" value="{{$data->session_time}}">
                                     <option value='Morning'>Morning</option>
                                     <option value='Evening'>Evening</option>
                                     <option value='Night'>Night</option>
                                   </select><br>
                     
-                     <label id="lbl">Session Date</label>
+                     <label id="lbl">Session Date<span style="color:red">*</span></label>
                      <input type="date" id="date" name="date"  class="form-control" value="{{$data->session_date}}"><br>
 
-                    <label >Rate</label>    
+                    <label >Rate<span style="color:red">*</span></label>    
                      <input type="text" class="form-control" name="rate" value="{{$data->rate}}"><br>
 
-                    <label >Paid</label>    
+                    <label >Paid<span style="color:red">*</span></label>    
                      <input type="text" id="paid" class="form-control" name="paid" value="{{$paid}}"><br>            
 
                      <input type="submit">

@@ -34,10 +34,10 @@
                         <form action="{{route('patient.update', $data->id)}}" method="post" class="col-sm-12">
                            @csrf
                            @method('put')
-                              <label for="sel1"><span style="color:red">Patient</span> NAME </label>
+                              <label for="sel1"><span style="color:red">Patient</span> NAME <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="name" value="{{$data->name}}"><br>
 
-                              <label for="sel1">Mobile No</label>
+                              <label for="sel1">Mobile No<span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="mobile" value="{{$data->mobile}}"><br>
 
                                <label for="sel1">profession</label>
@@ -47,7 +47,7 @@
                                   <input type="text" class="form-control" name="addr" value="{{$data->address}}"><br>
 
 
-                              <label for="sel1"><span style="color:red">Responsible</span> Doc NAME and ID</label><br>
+                              <label for="sel1"><span style="color:red">Responsible</span> Doc NAME and ID<span style="color:red">*</span></label><br>
                                   <input list="browsers" class="form-control" name="resposible_doc" value="{{$data->resposible_doc}}">
                                 <datalist id="browsers">
                                   @foreach($therapist_data as $data_t)

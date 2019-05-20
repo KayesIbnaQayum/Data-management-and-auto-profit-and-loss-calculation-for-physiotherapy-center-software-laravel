@@ -33,10 +33,10 @@
                     <div class="row">
                         <form action="{{route('patient.store')}}" method="post" class="col-sm-12">
                           @csrf
-                              <label for="sel1"><span style="color:red">Patient</span> NAME </label>
+                              <label for="sel1"><span style="color:red">Patient</span> NAME <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="name" value="{{old('name')}}"><br>
 
-                              <label for="sel1">Mobile No</label>
+                              <label for="sel1">Mobile No <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="mobile" value="{{old('mobile')}}"><br>
 
                                <label for="sel1">profession</label>
@@ -46,7 +46,7 @@
                                   <input type="text" class="form-control" name="addr" value="{{old('addr')}}"><br>
 
 
-                              <label for="sel1"><span style="color:red">Responsible</span> Doc NAME and ID</label><br>
+                              <label for="sel1"><span style="color:red">Responsible</span> Doc NAME and ID <span style="color:red">*</span></label><br>
                                   <input list="browsers" class="form-control" name="resposible_doc" value="{{old('resposible_doc')}}">
                                 <datalist id="browsers">
                                   @foreach($therapist_data as $data)

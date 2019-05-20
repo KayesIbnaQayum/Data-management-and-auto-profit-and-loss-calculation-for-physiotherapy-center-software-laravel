@@ -29,7 +29,7 @@
                     <div class="row">
                         <form action="{{route('payment.store')}}" method="post" class="col-sm-12">
                           @csrf
-                              <label for="sel1">Patient NAME and ID</label><br>
+                              <label for="sel1">Patient NAME and ID<span style="color:red">*</span></label><br>
                                   <input list="browsers" class="form-control" name="patient_id">
                                 <datalist id="browsers">
                                   @foreach($patient_data as $data)
@@ -39,17 +39,17 @@
 
 
 
-                    <label style="color:red">Payment Amount</label> 
+                    <label style="color:red">Payment Amount<span style="color:red">*</span><span style="color:red">*</span></label> 
                     <select name="pay_status">
                         <option value="paid" selected="">paid</option>
                         <option value="due">DUE</option>
                       </select>   
                      <input type="text" class="form-control" name="paid"><br>            
 
-                     <label >Date</label>
+                     <label >Date<span style="color:red">*</span></label>
                      <input type="date" name="date" class="form-control"><br>
 
-                              <label for="sel1">Session ID</label><br>
+                              <label for="sel1">Session ID<span style="color:red">*</span></label><br>
                                   <input list="sessionBrowsers" class="form-control" name="session_id">
                                 <datalist id="sessionBrowsers">
                                   @foreach($session_data as $datas)
@@ -61,11 +61,6 @@
 
 
                     </div>
-
-                 <div class="row">
-                    <p> patient name</p>
-                    <p> Total Due </p>
-                 </div>
                 </div>
             </div>
         </div>

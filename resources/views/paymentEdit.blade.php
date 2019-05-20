@@ -35,7 +35,7 @@
                         <form action="{{route('payment.update', ['id'=> $dataz->id])}}" method="post" class="col-sm-12">
                           @csrf
                           @method('put')
-                              <label for="sel1">Patient NAME and ID</label><br>
+                              <label for="sel1">Patient NAME and ID<span style="color:red">*</span></label><br>
                                   <input list="browsers" class="form-control" name="patient_id" value="{{$dataz->patient_id}}">
                                 <datalist id="browsers">
                                   @foreach($patient_data as $data)
@@ -45,17 +45,17 @@
 
 
 
-                    <label style="color:red">Payment Amount</label> 
+                    <label style="color:red">Payment Amount<span style="color:red">*</span></label> 
                     <select name="pay_status" value="">
                         <option value="paid" selected="">paid</option>
                         <option value="due">DUE</option>
                       </select>   
                      <input type="text" class="form-control" name="paid" value="{{$dataz->paid}}"><br>            
 
-                     <label >Date</label>
+                     <label >Date<span style="color:red">*</span></label>
                      <input type="date" name="date" class="form-control" value="{{$dataz->paid_date}}"><br>
 
-                              <label for="sel1">Session ID</label><br>
+                              <label for="sel1">Session ID<span style="color:red">*</span></label><br>
                                   <input list="sessionBrowsers" class="form-control" name="session_id" value="{{$dataz->session_id}}">
                                 <datalist id="sessionBrowsers">
                                   @foreach($session_data as $datas)
