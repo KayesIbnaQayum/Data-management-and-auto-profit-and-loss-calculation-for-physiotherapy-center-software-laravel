@@ -26,8 +26,8 @@
                          <table class="table table-striped">
                             <thead>
                               <tr>
-                                <th>patient. ID</th>
-                                <th>Patient Name(ID)</th>
+                                <th>Doctor ID</th>
+                                <th>Doctor Name(ID)</th>
                                 <th>Total money Collect</th>
                                 <th>Session Date</th>
             
