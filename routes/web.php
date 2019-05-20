@@ -27,6 +27,9 @@ Route::get('/addPayment', function(){return view('addPayment');}
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/detail', 'detailController@index');
+Route::get('/detail/{id}', 'detailController@fullDetail')->name('fullDetail');
+
 
 //resource controller 'patient Session'
 Route::resource('patientSession', 'patientSession');
