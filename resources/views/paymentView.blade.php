@@ -25,6 +25,7 @@
                                 <th>Patient Name(ID)</th>
                                 <th>Session Rate</th>
                                 <th>Paid(TK)</th>
+                                <th>total</th>
                                 <th>Date</th>
                                 <th>Session ID</th>
                                     <th>Edit</th>
@@ -38,14 +39,15 @@
                                <td>{{ $datas->id }}</td>
                                 <td>{{$datas->p_name}} ({{ $datas->patient_id }})</td>
                                 <td>{{$datas->rate}}</td>
+                                <td>{{$datas->paid}}</td>
                                 @php
-                                    $paid = $datas->paid - $datas->rate;
+                                    $total = $datas->paid - $datas->rate;
                                 @endphp
 
-                                @if($paid < 0)
-                                <td> <span style="background-color: red; padding:7px; color:white">{{ $paid }}</span></td>
+                                @if($total < 0)
+                                <td> <span style="background-color: red; padding:7px; color:white">{{ $total }}</span></td>
                                 @else
-                                <td >{{ $paid }}</td>
+                                <td >{{ $total }}</td>
                                 @endif
 
                                 <td>{{ $datas->paid_date }}</td>
