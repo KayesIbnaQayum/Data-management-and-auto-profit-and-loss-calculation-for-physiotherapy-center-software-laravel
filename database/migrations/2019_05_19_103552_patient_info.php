@@ -18,13 +18,13 @@ class PatientInfo extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->String('name');
-            $table->mediumInteger('mobile');
+            $table->bigInteger('mobile');
             $table->longText('profession')->nullable();
-            $table->longText('address');
+            $table->longText('address')->nullable();;
               $table->integer('resposible_doc');
               $table->integer('room_no')->nullable();
                $table->longText('wc')->nullable();
-            $table->mediumInteger('NID')->nullable();
+            $table->bigInteger('NID')->nullable();
         });
     }
 

@@ -17,9 +17,9 @@ class DocInfo extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->String('name');
-            $table->mediumInteger('mobile');
-             $table->longText('address');
-                 $table->mediumInteger('NID')->nullable();
+            $table->bigInteger('mobile')->nullable();
+             $table->longText('address')->nullable();
+                 $table->bigInteger('NID')->nullable();
                  $table->date('joined')->nullable();
 
 
