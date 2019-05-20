@@ -19,6 +19,7 @@ class Payment extends Migration
             $table->integer('patient_id');
             $table->integer('paid');
              $table->date('paid_date');
+              $table->integer('session_id')->nullable();
         });
     }
 

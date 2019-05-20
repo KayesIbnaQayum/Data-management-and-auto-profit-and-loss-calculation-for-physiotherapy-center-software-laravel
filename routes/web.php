@@ -32,6 +32,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('patientSession', 'patientSession');
 Route::resource('doctor', 'doctorController');
 Route::resource('patient', 'patientController');
+Route::resource('payment', 'paymentController');
 
 
 

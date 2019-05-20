@@ -33,13 +33,20 @@
                             <tbody>
                               
                          @foreach ($data as $datas)
+                                <tr>
                                <td>{{ $datas->id }}</td>
                                 <td>{{$datas->p_name}} ({{ $datas->patient_id }})</td>
-                                <td>{{ $datas->paid }}</td>
+                                @if($datas->paid < 0)
+                                <td> <span style="background-color: red; padding:7px; color:white">{{ $datas->paid }}</span></td>
+                                @else
+                                <td >{{ $datas->paid }}</td>
+                                @endif
+
                                 <td>{{ $datas->paid_date }}</td>
                                 <td>{{ $datas->session_id }}</td>
                                 
-                               <td><a class="btn btn-primary" href="{{route('payment.edit', $datas->id)}}">Edit
+                               <td><a class="btn btn-primary" href="{{route('payment.edit', $datas->id)}}">Edit</a>
+                            </tr>
                         @endforeach
                  
                
