@@ -70,11 +70,13 @@
                      <input type="text" class="form-control" name="rate" value="{{$data->rate}}"><br>
 
                     <label >Paid</label>    
-                     <input type="text" id="paid" class="form-control" name="paid"><br>            
+                     <input type="text" id="paid" class="form-control" name="paid" value="{{$paid}}"><br>            
 
                      <input type="submit">
 
-                     <form action="{{route('patientSession.destroy', ['id'=> $data->id])}}">
+                 </form>
+
+                     <form action="{{route('patientSession.destroy', ['id'=> $data->id])}}" method="post">
                       @csrf
                       @method('delete')
 
@@ -83,8 +85,6 @@
                       <br><input type="checkbox" name="delete" value="1"><p style="color:red">I want to delete this<p><br>
                       <input type="submit" value="Delete"> 
                     </form>
-                 </form>
-
                     </div>
 
                 </div>

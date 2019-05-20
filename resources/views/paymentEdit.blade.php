@@ -64,7 +64,10 @@
                                 </datalist><br>
                      <input type="submit">
 
-                     <form action="{{route('payment.destroy', ['id'=> $dataz->id])}}">
+
+              
+                 </form>
+                     <form action="{{route('payment.destroy', ['id'=> $dataz->id])}}" method="post">
                       @csrf
                       @method('delete')
 
@@ -73,9 +76,6 @@
                       <br><input type="checkbox" name="delete" value="1"><p style="color:red">I want to delete this<p><br>
                       <input type="submit" value="Delete"> 
                     </form>
-                 </form>
-                 </form>
-
 
                     </div>
 

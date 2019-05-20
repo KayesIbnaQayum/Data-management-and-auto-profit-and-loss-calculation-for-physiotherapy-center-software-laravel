@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests\patientSessionRule;
 use App\patient_session as patientSessions;
+use App\payment as payment;
 
 class patientSession extends Controller
 {
@@ -16,6 +17,7 @@ class patientSession extends Controller
      */
     public function index()
     {
+
 
         $data = DB::table('patient_session')
         ->join('patientinfo', 'patient_session.patient_id', '=', 'patientinfo.id')
@@ -41,7 +43,7 @@ class patientSession extends Controller
     public function create()
     {
         //
-              $patient_data = DB::select("select id as 'p_id', name as 'p_name' from patientinfo");
+        $patient_data = DB::select("select id as 'p_id', name as 'p_name' from patientinfo");
         $therapist_data = DB::select("select id as 't_id', name as 't_name' from docinfo");
 
 
@@ -56,17 +58,46 @@ class patientSession extends Controller
      */
     public function store(patientSessionRule $request)
     {
+  
+             
         //
         $patientSession = new patientSessions;
-        $patientSession->patient_id = $request->input('patient_id');
+        $patient_id =  $request->input('patient_id');
+        $patientSession->patient_id = $patient_id;
         $patientSession->therapist_id = $request->input('Therapist');
         $patientSession->rate = $request->input('rate');
         $patientSession->session_time = $request->input('sessionTime');
-        $patientSession->session_date = $request->input('date');
+        $date = $request->input('date');
+        $patientSession->session_date = $date;
 
-        $patientSession->save();
+         $paid = $request->input('paid');
+         $rate = $request->input('rate');
+   
 
-         return redirect('patientSession')->with('status', 'Patient session Added');
+         $check_patient_save = $patientSession->save();
+
+         if($check_patient_save){
+            $data = new payment;
+             $data->patient_id = $patient_id;
+             $data->paid = $paid;
+             $data->paid_date = $date;
+
+            $session_id = DB::select("SELECT `id` FROM `patient_session` ORDER BY `created_at` DESC LIMIT 1");
+       
+             $data->session_id = $session_id[0]->id;;
+             $checkSaveData = $data->save();  
+         }
+
+         if($checkSaveData == false){
+            patientSessions::find($session_id)->delete();
+         }
+    
+      
+      
+        
+
+
+        return redirect('patientSession')->with('status', 'Patient session Added');
 
     }
 
@@ -90,11 +121,25 @@ class patientSession extends Controller
     public function edit($id)
     {
         $data = patientSessions::find($id);
+        $paid = DB::select('select `paid` from `payment` where `session_id` = '.$id);
+        
+        if(!empty($paid[0]->paid)){
+            $amount = $paid[0]->paid;
+        }else{
+            $amount = 0;
+        }
+       
+
+
+       
+     
         $patient_data = DB::select("select id as 'p_id', name as 'p_name' from patientinfo");
         $therapist_data = DB::select("select id as 't_id', name as 't_name' from docinfo");
 
 
-        return view('patientSession_edit', ['therapist_data'=>$therapist_data, 'patient_data'=>$patient_data, 'data'=>$data]);
+        return view('patientSession_edit', ['therapist_data'=>$therapist_data, 'patient_data'=>$patient_data, 'data'=>$data, 'paid'=>$amount]);
+
+        
     }
 
     /**
@@ -107,12 +152,33 @@ class patientSession extends Controller
     public function update(Request $request, $id)
     {
          $patientSession = patientSessions::find($id);
-        $patientSession->patient_id = $request->input('patient_id');
+        $patient_id =  $request->input('patient_id');
+        $patientSession->patient_id = $patient_id;
         $patientSession->therapist_id = $request->input('Therapist');
         $patientSession->rate = $request->input('rate');
         $patientSession->session_time = $request->input('sessionTime');
-        $patientSession->session_date = $request->input('date');
-        $patientSession->save();
+        $date = $request->input('date');
+        $patientSession->session_date = $date;
+
+         $paid = $request->input('paid');
+         $rate = $request->input('rate');
+
+        
+
+         $check_patient_save = $patientSession->save();
+
+         if($check_patient_save){
+            $data = payment::where('session_id', '=', $id)->first();
+             $data->patient_id = $patient_id;
+             $data->paid = $paid;
+             $data->paid_date = $date;
+
+             $data->session_id = $id;
+             $checkSaveData = $data->save();  
+         }
+
+       
+    
 
         $redirect = 'patientSession/'.$id.'/edit';
         //
@@ -130,7 +196,8 @@ class patientSession extends Controller
         //
         if($req->input('delete') == 1){
             patientSessions::find($id)->delete();
-            return redirect()->route('home')->with('status', 'Patient session Deleted');
+            payment::where('session_id', '=', $id)->delete();
+            return redirect()->route('patientSession.index')->with('status', 'Patient session Deleted');
         }else{
             $redirect = 'patientSession/'.$id.'/edit';
         //
@@ -138,4 +205,6 @@ class patientSession extends Controller
         }
         
     }
+
+   
 }

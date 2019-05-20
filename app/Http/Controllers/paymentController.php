@@ -17,7 +17,9 @@ class paymentController extends Controller
     public function index()
     {
         //r
-        $data = DB::table('payment as p')->join('patientinfo as pi', 'pi.id', '=', 'p.patient_id')->select('p.*', 'pi.name as p_name')->orderBy('p.id', 'desc')->paginate(20);
+        $data = DB::table('payment as p')->join('patientinfo as pi', 'pi.id', '=', 'p.patient_id')->join('patient_session as s', 's.id', '=', 'p.session_id')->select('p.*', 'pi.name as p_name', 's.rate')->orderBy('p.id', 'desc')->paginate(20);
+
+
         return view('paymentView')->with('data', $data);
     }
 
@@ -47,10 +49,15 @@ class paymentController extends Controller
     public function store(paymentRule $request)
     {
         //
+        $patient_id = $request->input('patient_id');
+        $session_id = $request->input('session_id');
+        $check = payment::where('session_id', '=', $session_id)->where('patient_id', '=', $patient_id)->first();
+
+        if(empty($check)){
         $data = new payment;
-        $data->patient_id = $request->input('patient_id');
+        $data->patient_id = $patient_id;
          $data->paid_date = $request->input('date');
-          $data->session_id = $request->input('session_id');
+          $data->session_id = $session_id;
 
         // is it due or advance paid
           $pstatus = $request->input('pay_status');
@@ -63,6 +70,10 @@ class paymentController extends Controller
            $data->save();
 
            return redirect()->route('payment.create')->with('status', 'payment successful');
+        }else{
+            return redirect()->route('patientSession.edit', ['id'=>$session_id])->with('status', 'Patient Session Exist, you can edit it here');
+        }
+
     }
 
     /**
