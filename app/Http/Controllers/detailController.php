@@ -29,5 +29,20 @@ class detailController extends Controller
     	 return view('fullDetail')->with('data', $data);
     }
 
+    public function detail_p(Request $req){
+    	$from = '0000-00-00'; $to = '9999-12-12';
+    	if(request()->has('from') && request()->has('to')){
+    		$from = $req->query('from');
+    		$to = $req->query('to');
+    	}
+    	
+
+    	$data = DB::select('SELECT d.id as `d_id`, d.name as `d_name` , rate as `rate`, ps.session_date as `date` FROM docinfo d, patient_session ps WHERE ps.therapist_id = d.id AND ps.session_date >= "'.$from.'" AND ps.session_date <= "'.$to.'" order By d.id desc');
+
+
+        return view('docDetail')->with('data', $data);
+
+    }
+
 
 }

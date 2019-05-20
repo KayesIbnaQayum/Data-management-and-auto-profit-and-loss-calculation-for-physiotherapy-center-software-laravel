@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/detail', 'detailController@index');
 Route::get('/detail/{id}', 'detailController@fullDetail')->name('fullDetail');
+Route::get('/detail_p', 'detailController@detail_p')->name('detail_p');
 
 
 
