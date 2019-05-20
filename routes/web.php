@@ -31,6 +31,7 @@ Route::get('/detail', 'detailController@index');
 Route::get('/detail/{id}', 'detailController@fullDetail')->name('fullDetail');
 
 
+
 //resource controller 'patient Session'
 Route::resource('patientSession', 'patientSession');
 Route::resource('doctor', 'doctorController');

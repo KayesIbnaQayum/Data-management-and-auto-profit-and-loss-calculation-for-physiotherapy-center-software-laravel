@@ -16,6 +16,12 @@
 
                     <!--Component-->
                     @include('menu/topMenu')
+                    <form action="<?php echo $_SERVER['REQUEST_URI']?>" method="get">
+                        @csrf
+                        <input type="date" name="from" class="form-control" ><br>
+                         <input type="date" name="to" class="form-control" ><br>
+                         <input type="submit" value="submit">
+                    </form>
 
                     <div class="row">
                          <table class="table table-striped">

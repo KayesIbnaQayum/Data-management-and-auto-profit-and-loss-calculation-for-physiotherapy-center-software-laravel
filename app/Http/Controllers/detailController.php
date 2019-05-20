@@ -17,9 +17,17 @@ class detailController extends Controller
         return view('detail')->with('data', $data);
     }
 
-    public function fullDetail($id = 1){
-    	$data = DB::table('patientinfo as pi')->join('patient_session as ps', 'pi.id', '=', 'ps.patient_id')->join('docinfo as d', 'd.id', '=', 'ps.therapist_id')->where('pi.id', '=',$id)->select('d.name as d_name','d.id as d_id', 'pi.name as p_name', 'pi.id as p_id','ps.id as session_id','ps.session_time as session_time', 'ps.session_date as date', 'ps.rate as rate')->orderBy('ps.session_date', 'desc')->paginate(20);
+    public function fullDetail($id=0, $from = '0000-00-00', $to = '9999-12-12', Request $req){
+    	if(request()->has('from') && request()->has('to')){
+    		$from = $req->query('from');
+    		$to = $req->query('to');
+    	}
+    	
+    	
+    	$data = DB::table('patientinfo as pi')->join('patient_session as ps', 'pi.id', '=', 'ps.patient_id')->join('docinfo as d', 'd.id', '=', 'ps.therapist_id')->where('pi.id', '=',$id)->where('ps.session_date', '>=',$from)->where('ps.session_date', '<=', $to)->select('d.name as d_name','d.id as d_id', 'pi.name as p_name', 'pi.id as p_id','ps.id as session_id','ps.session_time as session_time', 'ps.session_date as date', 'ps.rate as rate')->orderBy('ps.session_date', 'desc')->paginate(20);
 
     	 return view('fullDetail')->with('data', $data);
     }
+
+
 }
