@@ -69,7 +69,7 @@
                     <label >Rate<span style="color:red">*</span></label>    
                      <input type="text" class="form-control" name="rate" value="{{old('rate')}}"><br>
 
-                    <label >Paid<span style="color:red">*</span></label>    
+                    <label >Paid</label>    
                      <input type="text" id="paid" class="form-control" name="paid" value="{{old('paid')}}"><br>            
 
                      <input type="submit">

@@ -224,7 +224,7 @@ class patientSession extends Controller
         
     }
 
-    protected function check_patient_doc_exist($doc_id, $patient_id){
+    protected function check_patient_doc_exist($patient_id, $doc_id){
         $checkDoc = DB::table('docinfo')->where('id', '=', $doc_id)->first();
         $checkpatient = DB::table('patientinfo')->where('id', '=', $patient_id)->first();
 

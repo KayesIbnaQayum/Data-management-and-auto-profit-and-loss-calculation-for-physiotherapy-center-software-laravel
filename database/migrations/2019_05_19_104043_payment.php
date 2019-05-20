@@ -17,7 +17,7 @@ class Payment extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->integer('patient_id');
-            $table->integer('paid');
+            $table->integer('paid')->nullable();
              $table->date('paid_date');
               $table->integer('session_id')->nullable();
         });
