@@ -58,12 +58,22 @@ class patientSession extends Controller
     public function store(patientSessionRule $request)
     {
   
+
              
         //
         $patientSession = new patientSessions;
         $patient_id =  $request->input('patient_id');
+        $therapist_id = $request->input('Therapist');
+
+        //check validity
+        $check_valid = $this->check_patient_doc_exist($patient_id, $therapist_id);
+
+        if($check_valid){
+            return redirect()->route('patientSession.create')->with('cerror', 'select doctor or patient from drop down menu');
+        }
+
         $patientSession->patient_id = $patient_id;
-        $patientSession->therapist_id = $request->input('Therapist');
+        $patientSession->therapist_id = $therapist_id;
         $patientSession->rate = $request->input('rate');
         $patientSession->session_time = $request->input('sessionTime');
         $date = $request->input('date');
@@ -153,7 +163,16 @@ class patientSession extends Controller
          $patientSession = patientSessions::find($id);
         $patient_id =  $request->input('patient_id');
         $patientSession->patient_id = $patient_id;
-        $patientSession->therapist_id = $request->input('Therapist');
+        $therapist_id = $request->input('Therapist');
+        //check validity
+        $check_valid = $this->check_patient_doc_exist($patient_id, $therapist_id);
+
+        if($check_valid){
+             $redirect = 'patientSession/'.$id.'/edit';
+            return redirect($redirect)->with('cerror', 'select doctor or patient from drop down menu');
+        }
+
+        $patientSession-> $therapist_id;
         $patientSession->rate = $request->input('rate');
         $patientSession->session_time = $request->input('sessionTime');
         $date = $request->input('date');
@@ -205,5 +224,13 @@ class patientSession extends Controller
         
     }
 
+    protected function check_patient_doc_exist($doc_id, $patient_id){
+        $checkDoc = DB::table('docinfo')->where('id', '=', $doc_id)->first();
+        $checkpatient = DB::table('patientinfo')->where('id', '=', $patient_id)->first();
+
+        if($checkDoc == null || $checkpatient == null){
+            return true;
+        }
+    }
    
 }

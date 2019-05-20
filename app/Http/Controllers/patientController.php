@@ -50,8 +50,15 @@ class patientController extends Controller
           $doc->address = $request->input('addr');
            $doc->profession = $request->input('prof');
             $doc->NID = $request->input('nid');
-            $doc->resposible_doc = $request->input('resposible_doc');
+            $resposible_doc = $request->input('resposible_doc');
+            $doc->resposible_doc = $resposible_doc;
         
+            //valid responsible_doc name
+            $check = $this->check_patient_doc_exist($resposible_doc);
+            if($check){
+                return redirect()->route('patient.create')->with('cerror', 'Invalid resposible doc');
+            }
+
             $doc->room_no = $request->input('room_no');
             $doc->wc = $request->input('wc');
 
@@ -104,8 +111,16 @@ class patientController extends Controller
           $doc->address = $request->input('addr');
            $doc->profession = $request->input('prof');
             $doc->NID = $request->input('nid');
-            $doc->resposible_doc = $request->input('resposible_doc');
+            $resposible_doc = $request->input('resposible_doc');
+            $doc->resposible_doc = $resposible_doc;
         
+            //valid responsible_doc name
+            $check = $this->check_patient_doc_exist($resposible_doc);
+            if($check){
+                return redirect()->route('patient.edit', $id)->with('cerror', 'Invalid resposible doc');
+            }
+
+
             $doc->room_no = $request->input('room_no');
             $doc->wc = $request->input('wc');
 
@@ -133,6 +148,14 @@ class patientController extends Controller
             $redirect = route('doctor.edit', $id);
         //
          return redirect($redirect)->with('cerror', 'You must click Delete Checkbox to delete');
+        }
+    }
+
+    protected function check_patient_doc_exist($doc_id){
+        $checkDoc = DB::table('docinfo')->where('id', '=', $doc_id)->first();
+
+        if($checkDoc == null){
+            return true;
         }
     }
 }

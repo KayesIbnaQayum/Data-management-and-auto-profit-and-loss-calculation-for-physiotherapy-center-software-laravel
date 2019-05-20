@@ -18,16 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 
-
-Route::get('/addPayment', function(){return view('addPayment');}
-
-)->middleware('auth')->name('addPayment');
-
+Route::group(['middleware' => ['auth']], function () {
+    
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/detail', 'detailController@index');
+Route::get('/detail', 'detailController@index')->name('detail_patient');
 Route::get('/detail/{id}', 'detailController@fullDetail')->name('fullDetail');
 Route::get('/detail_p', 'detailController@detail_p')->name('detail_p');
 
@@ -40,4 +37,4 @@ Route::resource('patient', 'patientController');
 Route::resource('payment', 'paymentController');
 
 
-
+});
