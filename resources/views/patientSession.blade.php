@@ -24,6 +24,8 @@
     </div>
 @endif
 
+
+
                     <!--Component-->
                     @include('menu/topMenu')
 
@@ -31,7 +33,7 @@
                         <form action="{{route('patientSession.store')}}" method="post" class="col-sm-12">
                             @csrf
                               <label for="sel1"><span style="color:red">Patient</span> NAME and ID</label><br>
-                                  <input list="browsers" class="form-control" name="patient_id">
+                                  <input list="browsers" class="form-control" name="patient_id" value="{{old('patient_id')}}">
                                 <datalist id="browsers" >
                               @foreach($patient_data as $patient_datas)
                                   <option value="{{$patient_datas->p_id}}">{{$patient_datas->p_name}}
@@ -41,7 +43,7 @@
                                 </datalist><br>
 
                               <label for="sel1">Therapist NAME and ID</label>
-                                  <input list="Therapist" class="form-control" name="Therapist">
+                                  <input list="Therapist" class="form-control" name="Therapist" value="{{old('Therapist')}}">
                                 <datalist id="Therapist">
                               @foreach($therapist_data as $therapist_datas)
                                   <option value="{{$therapist_datas->t_id}}">{{$therapist_datas->t_name}}
@@ -50,20 +52,20 @@
 
 
                               <label for="sel1">Session Time</label>
-                                  <select class="form-control" id="sel1" name="sessionTime">
+                                  <select class="form-control" id="sel1" name="sessionTime" value="{{old('sessionTime')}}">
                                     <option value='Morning'>Morning</option>
                                     <option value='Evening'>Evening</option>
                                     <option value='Night'>Night</option>
                                   </select><br>
                     
                      <label id="lbl">Session Date</label>
-                     <input type="date" id="date" name="date"  class="form-control"><br>
+                     <input type="date" id="date" name="date"  class="form-control" value="{{old('date')}}"><br>
 
                     <label >Rate</label>    
-                     <input type="text" class="form-control" name="rate"><br>
+                     <input type="text" class="form-control" name="rate" value="{{old('rate')}}"><br>
 
                     <label >Paid</label>    
-                     <input type="text" id="paid" class="form-control" name="paid"><br>            
+                     <input type="text" id="paid" class="form-control" name="paid" value="{{old('paid')}}"><br>            
 
                      <input type="submit">
                  </form>
