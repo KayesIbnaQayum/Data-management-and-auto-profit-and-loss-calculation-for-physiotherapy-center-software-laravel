@@ -43,7 +43,7 @@
                                 <td>{{ $datas->mobile}}</td>
                                 <td>{{ $datas->profession}}</td>
                                 <td>{{ $datas->address}}</td>
-                                 <td>{{ $datas->resposible_doc}}</td>
+                                 <td> {{ $datas->d_name}} ({{ $datas->resposible_doc}})</td>
                                 <td>{{ $datas->room_no}}</td>
                                   <td>{{ $datas->wc}}</td>
                                    <td>{{ $datas->NID}}</td>

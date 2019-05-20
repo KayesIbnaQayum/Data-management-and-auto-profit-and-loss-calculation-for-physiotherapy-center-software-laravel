@@ -17,8 +17,9 @@ class patientController extends Controller
     public function index()
     {
         //
-        $data = patientListView::paginate(20);
-        
+        $data = DB::table('patientinfo as p')->leftJoin('docinfo as d', 'd.id', '=', 'p.resposible_doc')->select('p.*', 'd.name as d_name')->orderBy('p.id', 'desc')->paginate(20);
+
+
         return view('patientListView')->with('data', $data);
     }
 
