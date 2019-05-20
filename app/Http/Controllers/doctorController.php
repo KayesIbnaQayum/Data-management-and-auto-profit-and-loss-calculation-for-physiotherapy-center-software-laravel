@@ -51,7 +51,7 @@ class doctorController extends Controller
 
         $doc->save();
 
-         return redirect('addDoc')->with('status', 'Doctor Added');
+         return redirect()->route('doctor.create')->with('status', 'Doctor Added');
     }
 
     /**
