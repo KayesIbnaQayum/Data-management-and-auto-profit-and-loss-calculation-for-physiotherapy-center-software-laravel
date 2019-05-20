@@ -111,11 +111,11 @@ class doctorController extends Controller
         //
         if($req->input('delete') == 1){
             doc::find($id)->delete();
-            return redirect()->route('doctor')->with('status', 'Patient session Deleted');
+            return redirect()->route('doctor.index')->with('status', 'Doctor Deleted');
         }else{
-            $redirect = route('doctor.edit', $id);
+            
         //
-         return redirect($redirect)->with('cerror', 'You must click Delete Checkbox to delete');
+         return redirect()->route('doctor.edit', $id)->with('cerror', 'You must click Delete Checkbox to delete');
         }
     }
 }

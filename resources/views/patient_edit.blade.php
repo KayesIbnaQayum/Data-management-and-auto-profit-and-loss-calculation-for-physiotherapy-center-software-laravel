@@ -51,7 +51,7 @@
                                   <input list="browsers" class="form-control" name="resposible_doc" value="{{$data->resposible_doc}}">
                                 <datalist id="browsers">
                                   @foreach($therapist_data as $data_t)
-                                    <option value="{{$data->t_id}}">{{$data_t->t_name}}
+                                    <option value="{{$data_t->t_id}}">{{$data_t->t_name}}
                                   @endforeach
                                 </datalist><br>
 
@@ -74,7 +74,10 @@
 
                      <input type="submit">
 
-                     <form action="{{route('patient.destroy', ['id'=> $data->id])}}">
+
+                 </form>
+                     
+                     <form action="{{route('patient.destroy', $data->id)}}" method="post">
                       @csrf
                       @method('delete')
 
@@ -83,7 +86,6 @@
                       <br><input type="checkbox" name="delete" value="1"><p style="color:red">I want to delete this<p><br>
                       <input type="submit" value="Delete"> 
                     </form>
-                 </form>
 
                     </div>
 

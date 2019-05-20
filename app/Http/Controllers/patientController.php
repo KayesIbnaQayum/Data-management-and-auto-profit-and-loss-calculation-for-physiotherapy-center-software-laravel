@@ -67,7 +67,7 @@ class patientController extends Controller
 
         $doc->save();
 
-         return redirect()->route('patient.create')->with('status', 'Patient Edited');
+         return redirect()->route('patient.create')->with('status', 'Patient Added');
     }
 
     /**
@@ -129,7 +129,7 @@ class patientController extends Controller
 
         $doc->save();
 
-         return redirect()->route('patient.edit', $id)->with('status', 'Patient Added');
+         return redirect()->route('patient.edit', $id)->with('status', 'Patient edited');
     }
 
     /**
@@ -138,16 +138,16 @@ class patientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $req)
     {
         //
         if($req->input('delete') == 1){
-            doc::find($id)->delete();
-            return redirect()->route('doctor')->with('status', 'Patient session Deleted');
+            patientListView::find($id)->delete();
+            return redirect()->route('patient.index')->with('status', 'Patient Deleted');
         }else{
-            $redirect = route('doctor.edit', $id);
+            
         //
-         return redirect($redirect)->with('cerror', 'You must click Delete Checkbox to delete');
+         return redirect()->route('patient.edit', $id)->with('cerror', 'You must click Delete Checkbox to delete');
         }
     }
 

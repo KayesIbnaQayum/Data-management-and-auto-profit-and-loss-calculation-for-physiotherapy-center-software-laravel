@@ -26,7 +26,6 @@
                                 <th>mobile</th>
                                 <th>address</th>
                                    <th>NID</th>
-                                     <th>Rate</th>
                                     <th>Edit</th>
 
                               </tr>

@@ -39,10 +39,10 @@
                               <label for="sel1">Mobile No <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="mobile" value="{{old('mobile')}}"><br>
 
-                               <label for="sel1">profession</label>
+                               <label for="sel1">profession<span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="prof" value="{{old('prof')}}"><br>
 
-                                  <label for="sel1">Address</label>
+                                  <label for="sel1">Address<span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="addr" value="{{old('addr')}}"><br>
 
 

@@ -34,13 +34,13 @@
                               <label for="sel1">Mobile No <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="mobile"><br>
 
-                               <label for="sel1">profession</label>
+                               <label for="sel1">profession<span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="prof"><br>
 
-                                  <label for="sel1">Address</label>
+                                  <label for="sel1">Address<span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="addr"><br>                                 
 
-                     <label >Joined Date</label>
+                     <label >Joined Date<span style="color:red">*</span></label>
                      <input type="date" name="Joined_date" class="form-control"><br>
 
                                  

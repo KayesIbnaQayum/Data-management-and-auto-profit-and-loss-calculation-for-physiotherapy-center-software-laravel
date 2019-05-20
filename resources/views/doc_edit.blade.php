@@ -42,10 +42,10 @@
                                   <input type="text" class="form-control" name="mobile" value="{{$data->mobile}}"><br>
 
                             
-                                  <label for="sel1">Address</label>
+                                  <label for="sel1">Address <span style="color:red">*</span></label>
                                   <input type="text" class="form-control" name="addr" value="{{$data->address}}"><br>                                 
 
-                     <label >Joined Date</label>
+                     <label >Joined Date <span style="color:red">*</span></label>
                      <input type="date" name="Joined_date" class="form-control" value="{{$data->joined}}"><br>
 
                                  
@@ -56,7 +56,9 @@
 
                      <input type="submit">
 
-                                          <form action="{{route('doctor.destroy', ['id'=> $data->id])}}">
+   
+                 </form>
+                                       <form action="{{route('doctor.destroy', ['id'=> $data->id])}}" method="post">
                       @csrf
                       @method('delete')
 
@@ -65,8 +67,6 @@
                       <br><input type="checkbox" name="delete" value="1"><p style="color:red">I want to delete this<p><br>
                       <input type="submit" value="Delete"> 
                     </form>
-                 </form>
-
 
 
                     </div>

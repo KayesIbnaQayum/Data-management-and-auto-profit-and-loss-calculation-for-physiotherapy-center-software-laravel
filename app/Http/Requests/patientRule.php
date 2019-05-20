@@ -28,7 +28,7 @@ class patientRule extends FormRequest
             'mobile'=>'required',
             'prof'=>'required',
             'addr'=>'required',
-            'date'=>'required',
+           
         ];
     }
 }
