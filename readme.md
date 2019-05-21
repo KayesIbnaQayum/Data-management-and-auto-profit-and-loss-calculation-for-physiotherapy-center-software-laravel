@@ -7,6 +7,19 @@ This is made for a Physio Therapy center in bangladesh. User can add, edit docto
 
 
 ## Screen Shots
-<p style="float:left; position:relative"><img style="width:42px;height:42px;border:0;" src="gitimg/adddoctor.png"> Add Doctor Menu</p>
-<p style="float:left; position:relative"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-<p style="float:left; position:relative"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<div style="float:left; position:relative"><img  src="gitimg/addpayment.png"> Add Payment Menu</div>
+<div style="float:left; position:relative"><img  src="gitimg/listpayment.png"> Payment list Menu</div>
+<div style="float:left; position:relative"><img  src="gitimg/adddoctor.png"> Add Doctor Menu</div>
+<div style="float:left; position:relative"><img  src="gitimg/listdoctor.png"> Doctor list Menu</div>
+<div style="float:left; position:relative"><img  src="gitimg/addpatient.png"> Add Patient Menu</div>
+<div style="float:left; position:relative"><img  src="gitimg/listpatient.png"> patient list Menu</div>    
+<div style="float:left; position:relative"><img  src="gitimg/doctorpaymentcal.png"> Doctor Payment Calculation Menu</div>
+<div style="float:left; position:relative"><img  src="gitimg/listsession.png"> Session list Menu</div>
+<div style="float:left; position:relative"><img  src="gitimg/patientpaymentCal.png"> Patient Payment Calculation Menu</div>
+<div style="float:left; position:relative"><img  src="gitimg/patientpaysessiondetails.png"> patient Cost details Menu</div>
+
+## How to Connect Database
+Link database in .env file then run this code in cmd,
+> php artisan migrate
+
+## Feel Free to use this program
