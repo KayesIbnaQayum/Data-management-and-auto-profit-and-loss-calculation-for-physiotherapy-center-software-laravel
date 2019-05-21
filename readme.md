@@ -7,6 +7,6 @@ This is made for a Physio Therapy center in bangladesh. User can add, edit docto
 
 
 ## Screen Shots
-<p style="float:left; position:relative"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p style="float:left; position:relative"><img style="width:42px;height:42px;border:0;" src="gitimg/adddoctor.png"> Add Doctor Menu</p>
 <p style="float:left; position:relative"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 <p style="float:left; position:relative"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
