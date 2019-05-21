@@ -13,6 +13,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                                          @if (session('cerror'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('cerror') }}
+                        </div>
+                    @endif
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
