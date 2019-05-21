@@ -7,3 +7,6 @@ This is made for a Physio Therapy center in bangladesh. User can add, edit docto
 
 
 ## Screen Shots
+<p style="float:left"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p style="float:left"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p style="float:left"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
